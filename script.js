@@ -136,3 +136,44 @@ document.getElementById('next-month').addEventListener('click', () => {
 
 updateBanner();
 renderCalendar();
+
+// Register service worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js');
+}
+
+function scheduleNotification() {
+  if (!('Notification' in window)) return;
+
+  Notification.requestPermission().then(permission => {
+    if (permission !== 'granted') return;
+
+    const now = new Date();
+    const remind = new Date();
+    remind.setHours(10, 0, 0, 0);
+
+    // If 10am already passed today, schedule for tomorrow
+    if (now > remind) remind.setDate(remind.getDate() + 1);
+
+    const delay = remind - now;
+
+    setTimeout(() => {
+      // Only notify if not taken
+      const stored = loadData();
+      const key = toKey(new Date());
+      if (!stored.takenDays[key]) {
+        navigator.serviceWorker.ready.then(reg => {
+          reg.showNotification('💊 Medicine Reminder', {
+            body: "Don't forget to take your medicine today!",
+            icon: './icon.png',
+            badge: './icon.png'
+          });
+        });
+      }
+      // Reschedule for next day
+      scheduleNotification();
+    }, delay);
+  });
+}
+
+scheduleNotification();
