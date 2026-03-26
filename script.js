@@ -142,17 +142,28 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js');
 }
 
+const notifTimeInput = document.getElementById('notif-time');
+notifTimeInput.value = data.notifTime || '10:00';
+notifTimeInput.addEventListener('change', () => {
+  data.notifTime = notifTimeInput.value;
+  saveData(data);
+  scheduleNotification();
+});
+
 function scheduleNotification() {
   if (!('Notification' in window)) return;
 
   Notification.requestPermission().then(permission => {
     if (permission !== 'granted') return;
 
+    const timeValue = document.getElementById('notif-time').value || '10:00';
+    const [hours, minutes] = timeValue.split(':').map(Number);
+
     const now = new Date();
     const remind = new Date();
-    remind.setHours(10, 0, 0, 0);
+    remind.setHours(hours, minutes, 0, 0);
 
-    // If 10am already passed today, schedule for tomorrow
+    // If time already passed today, schedule for tomorrow
     if (now > remind) remind.setDate(remind.getDate() + 1);
 
     const delay = remind - now;

@@ -163,3 +163,22 @@ h1 {
   background: transparent;
   cursor: default;
 }
+
+/* Notification Time */
+#settings {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background: white;
+  border-radius: 10px;
+  font-size: 0.95rem;
+}
+
+#notif-time {
+  font-size: 1rem;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
