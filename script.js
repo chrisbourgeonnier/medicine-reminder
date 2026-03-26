@@ -42,7 +42,7 @@ const undoBtn = document.getElementById('undo-btn');
 
 function updateBanner() {
   if (data.takenDays[todayKey]) {
-    banner.textContent = '✅ You already took your medicine today!';
+    banner.textContent = '🥳 Well done! You took your medicine today!';
     banner.className = 'taken';
     takeBtn.disabled = true;
     undoBtn.disabled = false;
@@ -165,8 +165,8 @@ function scheduleNotification() {
         navigator.serviceWorker.ready.then(reg => {
           reg.showNotification('💊 Medicine Reminder', {
             body: "Don't forget to take your medicine today!",
-            icon: './icon.png',
-            badge: './icon.png'
+            icon: './assets/drugs-192.png',
+            badge: './assets/drugs-192.png'
           });
         });
       }
