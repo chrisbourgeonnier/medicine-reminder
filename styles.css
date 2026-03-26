@@ -1,0 +1,165 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: sans-serif;
+  background: #f4f4f4;
+  padding: 16px;
+  max-width: 420px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+}
+
+#medicine-name {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+#status-banner {
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+  transition: background 0.3s;
+}
+
+.taken {
+  background: #4caf50;
+  color: white;
+}
+
+.not-taken {
+  background: #f44336;
+  color: white;
+}
+
+#take-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  background: #2196f3;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+#take-btn:disabled {
+  background: #aaa;
+  cursor: default;
+
+}
+
+#newbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+
+#undo-btn {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  background: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+#undo-btn:disabled {
+  background: #aaa;
+  cursor: default;
+}
+
+/* Calendar */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.calendar-header button {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.day-label {
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: #888;
+  padding: 4px 0;
+}
+
+.day-cell {
+  aspect-ratio: 1;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  background: #e0e0e0;
+  position: relative;
+  cursor: default;
+}
+
+.day-cell.taken {
+  background: #4caf50;
+  color: white;
+}
+
+.day-cell.not-taken {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.day-cell.today {
+  outline: 2px solid #2196f3;
+}
+
+.day-cell.new-box::after {
+  content: '✕';
+  font-size: 0.6rem;
+  position: absolute;
+  top: 2px;
+  right: 3px;
+  color: #e53935;
+}
+
+.day-cell.empty {
+  background: transparent;
+  cursor: default;
+}

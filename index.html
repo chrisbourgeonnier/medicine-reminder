@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Medicine Reminder</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="assets/totoro.ico" />
+  </head>
+  <body>
+
+    <h1>💊 Medicine Reminder</h1>
+
+    <input id="medicine-name" type="text" placeholder="Medicine name..." />
+
+    <div id="status-banner" class="not-taken">
+      You haven't taken your medicine today
+    </div>
+
+    <button id="take-btn">✅ Take Medicine Now</button>
+
+    <label id="newbox-label">
+      <input type="checkbox" id="newbox-cb" />
+      New box started today
+    </label>
+
+    <div class="calendar-header">
+      <button id="prev-month">&#8249;</button>
+      <span id="month-label"></span>
+      <button id="next-month">&#8250;</button>
+    </div>
+    <div class="calendar-grid" id="calendar-grid"></div>
+
+    <button id="undo-btn" disabled>↩️ Undo — Medicine Not Taken</button>
+
+  </body>
+  <script src="script.js"></script>
+</html>
