@@ -41,7 +41,8 @@ To install on your phone as a home screen app:
 ## Notifications
 
 The app will request notification permission on first load.
-If you allow it, you'll receive a reminder at **10:00am** each day if your medicine hasn't been marked as taken.
+If you allow it, you'll receive a reminder set at **10:00am** by default each day if your medicine hasn't been marked as taken.
+The time can be changed directly in the app: Scroll to the bottom of the screen and use the time picker to set your preferred time.
 
 To enable manually if you dismissed the prompt:
 - Chrome: tap the 🔒 lock icon in the address bar → Permissions → Notifications → Allow.
@@ -54,7 +55,7 @@ To enable manually if you dismissed the prompt:
 
 - **Stack**: HTML, CSS, JavaScript — no frameworks, no dependencies.
 - **Hosting**: GitHub Pages (static).
-- **Storage**: Browser `localStorage` — data persists on device, never leaves it.
+- **Storage**: Browser `localStorage` — stores medicine name, taken days, new box days, and notification time. Data never leaves the device.
 - **PWA**: `manifest.json` + service worker (`sw.js`) for offline support and notifications.
 - **Notifications**: Web Notifications API via the service worker, scheduled with `setTimeout`.
 

@@ -42,12 +42,12 @@ const undoBtn = document.getElementById('undo-btn');
 
 function updateBanner() {
   if (data.takenDays[todayKey]) {
-    banner.textContent = '🥳 Well done! You took your medicine today!';
+    banner.innerHTML = '<span class="banner-emoji">🥳</span> Well done! You took your medicine today!';
     banner.className = 'taken';
     takeBtn.disabled = true;
     undoBtn.disabled = false;
   } else {
-    banner.textContent = "⚠️ You haven't taken your medicine today";
+    banner.innerHTML = `<span class="banner-emoji">⚠️</span> You haven't taken your medicine today`;
     banner.className = 'not-taken';
     takeBtn.disabled = false;
     undoBtn.disabled = true;
